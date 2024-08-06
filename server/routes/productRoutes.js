@@ -18,13 +18,19 @@ productRouter.get(`/slug/:slug`, async (req,res) => {
 })
 
 productRouter.get(`/:id`, async (req,res) => {
-    const product =  await Product.findById(req.params.id);
-    console.log(product);
-    if (product) {
-        res.send(product);
-    } else {
-        res.status(404).send({ message: 'Product Not Found'});
+    try {
+        const product =  await Product.findById(req.params.id);
+        console.log(product);
+        if (product) {
+            res.send(product);
+        } else {
+            res.status(404).send({ message: 'Product Not Found'});
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: 'Internal Sever Error'});
     }
+
 })
 
 export default productRouter;
