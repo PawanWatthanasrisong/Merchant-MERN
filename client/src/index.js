@@ -6,13 +6,39 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async'
 import { StoreProvider } from './Store';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomeScreen from './pages/HomeScreen';
+import ProductScreen from './pages/ProductScreen';
+import CartScreen from './pages/CartScreen';
+import SignInScreen from './pages/SignInScreen';
+import ShippingAddressScreen from './pages/ShippingAddressScreen';
+import SignUpScreen from './pages/SignUp';
+import PaymentMethodScreen from './pages/PaymentMethodScreen';
+import PlaceOrderScreen from './pages/PlaceOrderScreen';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { path: '/', element: <HomeScreen/>},
+      { path:'/product/:slug', element: <ProductScreen/>},
+      { path:'/cart', element: <CartScreen />},
+      { path:'/signin',element: <SignInScreen/>},
+      { path:'/shipping',element: <ShippingAddressScreen/>},
+      { path:'/signup',element: <SignUpScreen/>},
+      { path:'/payment',element: <PaymentMethodScreen/>},
+      { path:'/placeorder',element: <PlaceOrderScreen/>},
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <StoreProvider>
       <HelmetProvider>
-        <App />
+        <RouterProvider router={router}/>
       </HelmetProvider>
     </StoreProvider>
   </React.StrictMode>

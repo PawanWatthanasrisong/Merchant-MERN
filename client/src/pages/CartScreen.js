@@ -76,7 +76,7 @@ export default function CartScreen() {
                                         ${item.price}
                                     </span>
                                 </Col>
-                                <Col md={2}>
+                                <Col md={1}>
                                     <Button variant='danger' onClick={() => removeItemHandler(item)} >
                                         DELETE
                                     </Button> 
