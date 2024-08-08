@@ -15,6 +15,8 @@ import ShippingAddressScreen from './pages/ShippingAddressScreen';
 import SignUpScreen from './pages/SignUp';
 import PaymentMethodScreen from './pages/PaymentMethodScreen';
 import PlaceOrderScreen from './pages/PlaceOrderScreen';
+import OrderScreen from './pages/OrderScreen';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,7 @@ const router = createBrowserRouter([
       { path:'/signup',element: <SignUpScreen/>},
       { path:'/payment',element: <PaymentMethodScreen/>},
       { path:'/placeorder',element: <PlaceOrderScreen/>},
+      { path:'/order/:id',element: <OrderScreen/>},
     ]
   }
 ])
@@ -38,7 +41,9 @@ root.render(
   <React.StrictMode>
     <StoreProvider>
       <HelmetProvider>
-        <RouterProvider router={router}/>
+        <PayPalScriptProvider deferLoading={true}>
+          <RouterProvider router={router}/>
+        </PayPalScriptProvider>
       </HelmetProvider>
     </StoreProvider>
   </React.StrictMode>

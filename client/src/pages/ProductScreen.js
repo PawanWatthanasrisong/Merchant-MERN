@@ -42,6 +42,7 @@ function ProductScreen() {
         error: '',
     })
     useEffect(()=>{
+        console.log('here');
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST'})
             try {
