@@ -17,6 +17,7 @@ import PaymentMethodScreen from './pages/PaymentMethodScreen';
 import PlaceOrderScreen from './pages/PlaceOrderScreen';
 import OrderScreen from './pages/OrderScreen';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import OrderHistoryScreen from './pages/OrderHistoryScreen';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path:'/payment',element: <PaymentMethodScreen/>},
       { path:'/placeorder',element: <PlaceOrderScreen/>},
       { path:'/order/:id',element: <OrderScreen/>},
+      { path:'/orderhistory',element: <OrderHistoryScreen/>},
     ]
   }
 ])

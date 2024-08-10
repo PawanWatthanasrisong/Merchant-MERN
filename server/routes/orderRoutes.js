@@ -18,6 +18,7 @@ orderRouter.post('/', isAuth, async(req,res) => {
             taxPrice: req.body.taxPrice,
             totalPrice: req.body.totalPrice,
             user: req.user._id,
+            createdAt: req.body.createdAt
         });
 
         const order = await newOrder.save();
@@ -26,6 +27,18 @@ orderRouter.post('/', isAuth, async(req,res) => {
         console.log(error);
     }
 })
+
+orderRouter.get('/mine', isAuth, async(req,res) => {
+    try{
+        console.log('here');
+        const orders =  await Order.find({user: req.user._id});
+        console.log(orders);
+        res.send(orders);
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 orderRouter.get('/:id', isAuth, async(req,res) => {
     try{
@@ -40,6 +53,7 @@ orderRouter.get('/:id', isAuth, async(req,res) => {
         console.log(error);
     }
 })
+
 
 orderRouter.put('/:id/pay', isAuth, async(req, res) => {
     try {

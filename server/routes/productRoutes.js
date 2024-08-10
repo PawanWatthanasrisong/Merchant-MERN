@@ -17,6 +17,17 @@ productRouter.get(`/slug/:slug`, async (req,res) => {
     }
 })
 
+productRouter.get('/categories', async(req,res) => {
+    try {
+        const categories = await Product.find().distinct('category');
+        console.log(categories);
+        res.send(categories);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: 'Internal Sever Error'});
+    }
+})
+
 productRouter.get(`/:id`, async (req,res) => {
     try {
         const product =  await Product.findById(req.params.id);
@@ -31,6 +42,8 @@ productRouter.get(`/:id`, async (req,res) => {
         res.status(500).send({ message: 'Internal Sever Error'});
     }
 
-})
+});
+
+
 
 export default productRouter;

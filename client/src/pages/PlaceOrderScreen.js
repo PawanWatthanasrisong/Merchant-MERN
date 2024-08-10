@@ -62,6 +62,7 @@ export default function PlaceOrderScreen() {
           shippingPrice: cart.shippingPrice,
           taxPrice: cart.taxPrice,
           totalPrice: cart.totalPrice,
+          createdAt: Date.now()
         },
         {
           headers: {
