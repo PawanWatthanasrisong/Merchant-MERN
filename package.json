@@ -1,5 +1,17 @@
 {
   "dependencies": {
     "react-helmet-async": "^2.0.5"
-  }
+  },
+  "name": "merchantjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "node server/index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
